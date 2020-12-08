@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A195A756-1E29-40E7-92F6-6A317032A831}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Библиотечная_система</RootNamespace>
+    <AssemblyName>Библиотечная система</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>books_library_1768.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DGV2Printer">
+      <HintPath>..\..\..\..\Downloads\DGV2Printer-master\DGV2Printer-master\build\AnyCpu\NET20\DGV2Printer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Админка\Администратор.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Админка\Администратор.Designer.cs">
+      <DependentUpon>Администратор.cs</DependentUpon>
+    </Compile>
+    <Compile Include="БиблиотекаDataSet.cs">
+      <DependentUpon>БиблиотекаDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="БиблиотекаDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>БиблиотекаDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Карточка читателя\Год издания.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Карточка читателя\Год издания.Designer.cs">
+      <DependentUpon>Год издания.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Карточка читателя\Жанр.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Карточка читателя\Жанр.Designer.cs">
+      <DependentUpon>Жанр.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Карточка читателя\Карточка читатели.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Карточка читателя\Карточка читатели.Designer.cs">
+      <DependentUpon>Карточка читатели.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Карточка читателя\Книги.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Карточка читателя\Книги.Designer.cs">
+      <DependentUpon>Книги.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Карточка читателя\Новая карточка читателя.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Карточка читателя\Новая карточка читателя.Designer.cs">
+      <DependentUpon>Новая карточка читателя.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Карточка читателя\Новая книга.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Карточка читателя\Новая книга.Designer.cs">
+      <DependentUpon>Новая книга.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Объекты\Объекты.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Объекты\Объекты.Designer.cs">
+      <DependentUpon>Объекты.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Объекты\Объекты.Автор.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Объекты\Объекты.Ведомость книги на руках.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Объекты\Объекты.Ведомость на выдачу.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Объекты\Объекты.Жанр.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Объекты\Объекты.Общее.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Объекты\Объекты.Типы номенклатуры.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Объекты\Объекты.Читатели.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Работа внутри БД.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Работа внутри БД.Designer.cs">
+      <DependentUpon>Работа внутри БД.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="РегАвт\Авторизация.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="РегАвт\Авторизация.Designer.cs">
+      <DependentUpon>Авторизация.cs</DependentUpon>
+    </Compile>
+    <Compile Include="РегАвт\Регистрация.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="РегАвт\Регистрация.Designer.cs">
+      <DependentUpon>Регистрация.cs</DependentUpon>
+    </Compile>
+    <Compile Include="РегАвт\Смена пароля.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="РегАвт\Смена пароля.Designer.cs">
+      <DependentUpon>Смена пароля.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Формы\Автор.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Формы\Автор.Designer.cs">
+      <DependentUpon>Автор.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Формы\Благодарности.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Формы\Благодарности.Designer.cs">
+      <DependentUpon>Благодарности.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Формы\Дата сдачи.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Формы\Дата сдачи.Designer.cs">
+      <DependentUpon>Дата сдачи.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Формы\Добавить год издания.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Формы\Добавить год издания.Designer.cs">
+      <DependentUpon>Добавить год издания.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Формы\Жанр книг.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Формы\Жанр книг.Designer.cs">
+      <DependentUpon>Жанр книг.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Формы\Новый тип номенклатуры.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Формы\Новый тип номенклатуры.Designer.cs">
+      <DependentUpon>Новый тип номенклатуры.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Формы\О программе.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Формы\О программе.Designer.cs">
+      <DependentUpon>О программе.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Админка\Администратор.resx">
+      <DependentUpon>Администратор.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Карточка читателя\Год издания.resx">
+      <DependentUpon>Год издания.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Карточка читателя\Жанр.resx">
+      <DependentUpon>Жанр.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Карточка читателя\Карточка читатели.resx">
+      <DependentUpon>Карточка читатели.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Карточка читателя\Книги.resx">
+      <DependentUpon>Книги.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Карточка читателя\Новая карточка читателя.resx">
+      <DependentUpon>Новая карточка читателя.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Карточка читателя\Новая книга.resx">
+      <DependentUpon>Новая книга.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Объекты\Ведомость книги на руках.rdlc" />
+    <EmbeddedResource Include="Объекты\Ведомость на выдачу.rdlc" />
+    <EmbeddedResource Include="Объекты\Объекты.resx">
+      <DependentUpon>Объекты.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Работа внутри БД.resx">
+      <DependentUpon>Работа внутри БД.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="РегАвт\Авторизация.resx">
+      <DependentUpon>Авторизация.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="РегАвт\Регистрация.resx">
+      <DependentUpon>Регистрация.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="РегАвт\Смена пароля.resx">
+      <DependentUpon>Смена пароля.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Формы\Автор.resx">
+      <DependentUpon>Автор.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Формы\Благодарности.resx">
+      <DependentUpon>Благодарности.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Формы\Дата сдачи.resx">
+      <DependentUpon>Дата сдачи.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Формы\Добавить год издания.resx">
+      <DependentUpon>Добавить год издания.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Формы\Жанр книг.resx">
+      <DependentUpon>Жанр книг.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Формы\Новый тип номенклатуры.resx">
+      <DependentUpon>Новый тип номенклатуры.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Формы\О программе.resx">
+      <DependentUpon>О программе.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="БиблиотекаDataSet.xsc">
+      <DependentUpon>БиблиотекаDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="БиблиотекаDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>БиблиотекаDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="БиблиотекаDataSet.xss">
+      <DependentUpon>БиблиотекаDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\05a34de82887e218ad6765cdafed184d.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\25132894.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\J_Je0r0q30444c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\K1d11vBjtLU1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\K1d11vBjtLU2.1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\K1d11vBjtLU2рлоав.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\registraciya_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\regnum_picture_15551568816166795_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Russia.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s1200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zvezda-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\кнопка.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\кнопка 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bibl.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\books_library_1768.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="books_library_1768.ico" />
+    <None Include="Resources\no-photo-girl.jpg" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\71669957-star-icon-asterisk-flat-icon-.jpg" />
+    <None Include="Resources\кнопка 2.png" />
+    <None Include="Resources\customer-vector-3.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
